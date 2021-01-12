@@ -207,3 +207,15 @@ There are five color parsing functions that you will need to learn.
 
 #### 1.  The `__cs()` function
 The `__cs()` function stands for "colored string".  Use this for parsing stuff like sentences.  Don't even think about parsing individual words with this.  A few better function will be shown in a second.
+An example would be: 
+
+```javascript
+body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));
+```
+
+You can pass in all colors including RGB, HSL, Hex Codes, and CSS colors.  To avoid crashing the iris engine (which can happen at times), don't enter built-in CSS colors.  Use hex, rgb, and hsl instead.
+##### Identically Colored Strings
+`body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));`
+`body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "hsl(120, 100%, 29%)"));`
+`body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "#009600"));`
+
