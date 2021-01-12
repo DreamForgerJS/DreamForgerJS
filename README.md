@@ -216,8 +216,18 @@ body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rg
 You can pass in all colors including RGB, HSL, Hex Codes, and CSS colors.  To avoid crashing the iris engine (which can happen at times), don't enter built-in CSS colors.  Use hex, rgb, and hsl instead.
 ##### Identically Colored Strings
 ```javascript
-body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));
-body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "hsl(120, 100%, 29%)"));
-body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "#009600"));
+body.log(iris.__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));
+body.log(iris.__cs("You walk in a dark, dense forest full of massive pine trees", "hsl(120, 100%, 29%)"));
+body.log(iris.__cs("You walk in a dark, dense forest full of massive pine trees", "#009600"));
 ```
+
+#### 2.  the `parseWord()` function
+If you want to color a specific word, call the function inside of the `parseColors()` function.
+```javascript
+function parseColors(){
+    iris.parseWord("apple","#FF0000");
+}
+```
+Now if the word "apple" is logged to the body, all matches will be colored red.
+
 
