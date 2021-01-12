@@ -43,3 +43,19 @@ Once you have the code below, you should see a dark-gray screen with an input ">
   DreamForger.setup();
 </script>
 ```
+
+### options
+
+You can use the `DreamForger.setOptions()` function to make changes to the game's visibility and functionality.  Note that none of the options are required.
+
+<script type="module">
+  import { DreamForger, body, alg, iris } from 'https://cdn.jsdelivr.net/gh/DreamForgerJS/DreamForgerJS@[ version ]/scripts/core.js';
+    
+  //setup function
+  DreamForger.setup();
+    
+  //setting options
+  DreamForger.setOptions({
+    //...
+  });
+</script>
