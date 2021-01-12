@@ -247,3 +247,29 @@ function parseColors(){
 ```
 Each item in the array stands for one character in the word.  The first letter in the word "rainbow" in this example will be colored "#FF0000", the second "rgb(200,175,0)", etc.
 
+
+#### 4.  `parseWordChain()`
+With the `parseWordChain()` function, you can parse multiple words at once without having to call the `parseWord()` function multiple times.
+```javascript
+function parseColors(){
+    iris.parseWordChain({
+        "apple":"#FF0000",
+        "banana":"#FFFF00",
+        "water":"#0000FF"
+    });
+}
+```
+The word "apple" will be colored "#FF0000", "banana" colored "#FFFF00", etc.
+
+#### 5.  `parseMultChain()`
+This function is very simillar to the `parseWordChain()` one.  You should be able to find out how to use it.
+
+```javascript
+function parseColors(){
+    iris.parseMultChain({
+    "rainbow":["#FF0000", "rgb(200,175,0)", "rgb(255,255,0)", "#00FF00", "#0000FF", "#AA00FF", "#FF0000"],
+    //add more mult words here
+    });
+}
+```
+
