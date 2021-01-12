@@ -100,3 +100,69 @@ Make sure if you set the `maxLines` property, you set the `clearBodyOverflow` pr
 
 #### example #3 : showLastCommand
 In a classic Interactive Fiction game, the player's last command is shown.  In this engine, by default, it is not.  If you would like to let the player see their last command, set the `showLastCommand` property to true.
+
+
+### Logging text to the body
+
+There are a few basic functions to help you log text to the body.
+  - `body.log("text")` will log some text to the body and will create a line break after.
+  - `body.write("text")` will write some text to the body without applying a line break.
+  - `body.logln("text")` will log some text followed by two line breaks.
+  - `body.clear()` will clear the entire body of all its text.
+You can also code HTML inside of the body logging/writing function.  
+`body.log("This is text <code>This is code</code> <br> <ul><li>List Item</li></ul>")`
+You can use the `<br>` tag to apply line breaks.
+`body.log("Line one<br> Line two<br> Line three<br> Line four")`
+Header tags (h1-h6) can also be logged, but let's not try that.
+
+
+### Handling Commands with DreamForgerJS
+
+Add the code below into your JS.  Make sure it's after the setup.
+
+```javascript
+let com;
+DreamForger.handleCommands = function(){ 
+  com = DreamForger.setCommander()
+}
+```
+
+The "com" variable doesn't have to be named "com", but that is the name of the variable used in the tutorial.
+
+- `com.all` will return the entire value of the player's input as a string.
+- `com.splt` is the same but splitted into an array.  You probably won't need to use this but if you do, use it as an array
+- `com.first` is the first word that the player inputs.  It can be very useful at times
+- `com.last` is the last word that the player inputs
+- `com.mid` is the content in the middle of the first and last words the player inputs.  If the player types `one two three four`, `com.mid` will return `two three`
+- `com.leftSide` will return the player's input except for the last word as a string
+- `com.rightSide` will return the player's input as a string except for the first word.  If you typed something like `say hello to jonathan potter`, `com.rightSide` will return `hello to jonathan potter`
+
+Test if the first word the player inputs is "hello"
+
+```javascript
+if(com.first === "hello"){
+    body.log("You greeted me!");
+}
+```
+
+- `>hello` -> "You greeted me!"
+- `>hello computer` -> "You greeted me!"
+- `>hello world` -> "You greeted me!"
+- `>hello hello blob flop ew gut` -> "You greeted me!"
+
+Test if `com.mid` is "are so"
+
+```javascript
+if(com.mid === "are so"){
+    body.log("I know, right?")
+}
+```
+
+- `>dogs are so bad` -> "I know, right?"
+- `>cats are so wierd` -> "I know, right?"
+- `>elephants are so big` -> "I know, right?"
+- `>elves are so fat` -> "I know, right?"
+
+The other properties of the `com` variable should be simple enough to understand for you.
+
+
