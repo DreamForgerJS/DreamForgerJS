@@ -230,4 +230,20 @@ function parseColors(){
 ```
 Now if the word "apple" is logged to the body, all matches will be colored red.
 
+#### 3.  multi-colored words.
+Let's say you want to color the word "rainbow" multiple colors.  If you do, here's the perfect function for you.
+```javascript
+function parseColors(){
+    iris.parseMultWord("rainbow", [
+        "#FF0000",
+        "rgb(200,175,0)",
+        "rgb(255,255,0)",
+        "#00FF00",
+        "#0000FF",
+        "#AA00FF",
+        "#FF0000"
+    ]);
+}
+```
+Each item in the array stands for one character in the word.  The first letter in the word "rainbow" in this example will be colored "#FF0000", the second "rgb(200,175,0)", etc.
 
