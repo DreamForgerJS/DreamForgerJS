@@ -50,6 +50,7 @@ Once you have the code below, you should see a dark-gray screen with an input ">
 
 You can use the `DreamForger.setOptions()` function to make changes to the game's visibility and functionality.  Note that none of the options are required.
 
+```html
 <script type="module">
   import { DreamForger, body, alg, iris } from 'https://cdn.jsdelivr.net/gh/DreamForgerJS/DreamForgerJS@[ version ]/scripts/core.js';
     
@@ -58,6 +59,31 @@ You can use the `DreamForger.setOptions()` function to make changes to the game'
     
   //setting options
   DreamForger.setOptions({
-    //...
+  
+    textColor: "red", //changes the main text color of the game.  The Iris module can still change colors if this option is used.
+    
+    backgroundColor: "blue", //changes the background color of the body.
+    
+    strokeColor: "green", //changes the color of the intersection line.
+    
+    textFont: "monospace", //changes the text font in the game
+    
+    fontSize: 15, //changes the body font size (px).  Enter an integer
+    
+    title: "DreamForger Execution Environment", //changes the title of the game.  Useful in live websites.
+    
+    /*****
+     *  Special Options
+     *****/
+    
+    selectCommandOnSubmit: true, //see example #1 below
+    
+    maxLines: "auto", //see example #2 below
+    
+    clearBodyOverflow: true, //see example #2 below
+    
+    showLastCommand: true, //see example #3 below
+    
   });
 </script>
+```
