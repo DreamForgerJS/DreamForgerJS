@@ -26,10 +26,11 @@ Inside of your script tag, put an `import` statement as shown below:
 
 ```html
 <script type="module">
-  //change "[ version ]" to the desired version. -->
+  //change "[ version ]" to the desired version.  1.1.0 is the current. -->-->-->-->-->-->-->-->-->-->-->--1.1.0
   import { DreamForger, body, alg, iris } from 'https://cdn.jsdelivr.net/gh/DreamForgerJS/DreamForgerJS@[ version ]/scripts/core.js';
 </script>
 ```
+
 
 You have just finished embedding DreamForgerJS!
 
