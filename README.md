@@ -350,3 +350,5 @@ If you are wondering why match5 and match6 aren't returning other values that ha
 
 - The `floorRand()` function returns a random **whole number** between a minimum and maximum range.
 `let wholeNumber = arl.floorRand(1, 10)`
+
+&copy; Conner Ow (LeviathanProgramming) 2021.
