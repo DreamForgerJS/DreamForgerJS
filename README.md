@@ -273,3 +273,80 @@ function parseColors(){
 }
 ```
 
+### Built-in algorithms
+
+You can use thest built-in string and array algorithms to make your life easier.
+Here is the starter code for you.  Assume you have already imported everything.
+```javscript
+let inventory = [
+    "apple",
+    "banana",
+    "iron dagger",
+    "hunk of turquoise",
+    "gold nugget",
+    "flask of elixir"
+];
+DreamForger.setup();
+DreamForger.setOptions({
+    maxLines: "auto",
+    clearBodyOverflow: true,
+})
+body.log("Alg.js testing");
+DreamForger.handleCommands = function() {
+    let com = DreamForger.setCommander();
+    //...
+}
+```
+
+Let's start by using the `matchArr` function.  The `matchArr` function will take two arguments: an array, and a value.  It will test if an item in the array matches the value.  It the array has the exact value, the function will return `true`.  Set your `df.handleCommands` as shown below:
+(assume we are using the code above with the inventory variable)
+
+```javascript
+    body.log("Type in something and hit enter.  You will be told if you have that item in your inventory.")
+    DreamForger.handleCommands = function() {
+        let inventoryMatch = alg.matchArr(inventory, com.all);
+        if (inventoryMatch) {
+            body.log("You have that item.")
+        }else {
+            body.log("You don't have that item.")
+        }
+    }
+```
+
+Next, you will learn how to use the `searchArr` function.  It is extremely useful.  What it does is it takes an array and a value like `matchArr`, but what's different is that it will return the array item that contains the value.
+
+```javascript
+let inventory = [
+    "apple",
+    "banana",
+    "iron dagger",
+    "hunk of turquoise",
+    "gold nugget",
+    "flask of elixir"
+];
+let match1 = alg.matchArr(inventory, "apple") // returns "apple"
+let match2 = alg.matchArr(inventory, "app") // returns "apple"
+let match3 = alg.matchArr(inventory, "hunk") // returns "hunk of turquiose"
+let match4 = alg.matchArr(inventory, "turquoise") // returns "hunk of turquiose"
+let match5 = alg.matchArr(inventory, "a") // returns "apple"
+let match6 = alg.matchArr(inventory, "g") // returns "iron dagger"
+```
+
+If you are wondering why match5 and match6 aren't returning other values that have the specified match, here's why: The function scans for the match from beginning to end of the array so the first element that has the match is returned.
+
+##### other basic algorithms
+
+- The `arrRand()` function returns a random element in an array.  Just pass an array in as a parameter and get the returned value.
+`let randEl = alg.arrRand(inventory)`
+
+- The `ind()` function is a shortened version of the built-in `indexOf()` JS function.  It returns the index of an item in an array.  The first parameter is a array and the second is the value.
+`let arrayIndex = alg.ind(inventory, "apple")`
+
+- The `rem()` function removes an item from an array.
+`alg.rem(inventory, "banana")`
+
+- The `rand()` function returns a random number between a minimum and maximum range.
+`let number = alg.rand(1, 5)`
+
+- The `floorRand()` function returns a random **whole number** between a minimum and maximum range.
+`let wholeNumber = arl.floorRand(1, 10)`
