@@ -215,7 +215,9 @@ body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rg
 
 You can pass in all colors including RGB, HSL, Hex Codes, and CSS colors.  To avoid crashing the iris engine (which can happen at times), don't enter built-in CSS colors.  Use hex, rgb, and hsl instead.
 ##### Identically Colored Strings
-`body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));`
-`body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "hsl(120, 100%, 29%)"));`
-`body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "#009600"));`
+```javascript
+body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));
+body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "hsl(120, 100%, 29%)"));
+body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "#009600"));
+```
 
