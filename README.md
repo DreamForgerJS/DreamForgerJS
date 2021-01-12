@@ -87,3 +87,16 @@ You can use the `DreamForger.setOptions()` function to make changes to the game'
   });
 </script>
 ```
+
+#### example #1 : selectCommandOnSubmit
+Usually, in an interactive fiction game, once you submit the command, the input box will clear and you will have to type in the next one.
+If you want to allow users to enter the same command multiple times without having to retype them, set the `selectCommandOnSubmit` option to `true`.  By default, it is set to `false`.
+
+#### example #2 : maxLines & clearing body overflow
+Most of the time in interactive fiction games, all the commands you enter and the entire story is left in the body.  In the DreamForgerJS engine, you can't scroll to see your past gameplay.
+setting the `maxLines` and `clearBodyOverflow` properties are **highly** reccomended.  If you don't set them, your game will be very inefficient.
+You can set the `maxLines` property to an integer or to "auto".  If you set it to, say, `5`, the body log will only allow five lines of text in the game.  Setting it to "auto" will be much better.  Depending on the height of the device, the maximum number of lines will be limited to the screen height.
+Make sure if you set the `maxLines` property, you set the `clearBodyOverflow` property to `true` as well or it will not work.
+
+#### example #3 : showLastCommand
+In a classic Interactive Fiction game, the player's last command is shown.  In this engine, by default, it is not.  If you would like to let the player see their last command, set the `showLastCommand` property to true.
