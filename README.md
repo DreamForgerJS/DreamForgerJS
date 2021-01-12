@@ -127,7 +127,7 @@ DreamForger.handleCommands = function(){
 }
 ```
 
-The "com" variable doesn't have to be named "com", but that is the name of the variable used in the tutorial.
+The "com" variable doesn't have to be named "com", but that is the name of the variable used in the tutorial.  You can use it to control a lot of things.  Here are the different propery values of it.
 
 - `com.all` will return the entire value of the player's input as a string.
 - `com.splt` is the same but splitted into an array.  You probably won't need to use this but if you do, use it as an array
@@ -166,3 +166,44 @@ if(com.mid === "are so"){
 The other properties of the `com` variable should be simple enough to understand for you.
 
 
+### The Iris Module : Parsing words & colors.
+
+Declare a function and name it whatever you want.  In this example, it will be called `parseColors()`.  Place it before setting the `DreamForger.handleCommands` function.
+
+```javascript
+function parseColors(){
+
+}
+```
+
+Next, call the function at the **end** of the `DreamForger.handleCommands` function.  Note that it has to be the very last line of code in the command handler function.
+
+```javascript
+import { DreamForger, body, alg, iris } from 'https://cdn.jsdelivr.net/gh/DreamForgerJS/DreamForgerJS@[ version ]/scripts/core.js';
+
+DreamForger.setup();
+DreamForger.setOptions({
+    //...
+});
+
+function parseColors(){
+
+}
+
+let com;
+DreamForger.handleCommands = function(){ 
+  com = DreamForger.setCommander()
+  
+  if(com.first === "hello"){
+    body.log("Lorem Ipsum Dolor Sit Amet Ew Pew Ug Blat Random Text Wierd");
+  }
+  
+  parseColors();
+}
+```
+
+Now you are ready to start parsing words.
+There are five color parsing functions that you will need to learn.
+
+#### 1.  The `__cs()` function
+The `__cs()` function stands for "colored string".  Use this for parsing stuff like sentences.  Don't even think about parsing individual words with this.  A few better function will be shown in a second.
