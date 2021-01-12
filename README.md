@@ -1,6 +1,6 @@
 # DreamForgerJS
 
-DreamForgerJS is a JS library to help you make [Interactive Fiction](https://en.wikipedia.org/wiki/Interactive_fiction) games.  This library is still in progress.
+DreamForgerJS is a JS library to help you make [Interactive Fiction](https://en.wikipedia.org/wiki/Interactive_fiction) games.  This library is still in progress.  Here is a [demo](https://codepen.io/LeviathanProgramming/pen/NWROwbB)
 
 ## Usage
 Basic Commands to help you be able to use DreamForgerJS
