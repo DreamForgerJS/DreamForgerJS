@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>DreamForger Execution Environment</title>
+  </head>
+  <body>
+    <script src="./scripts/core.js" type="module"></script>
+    <script type="module">
+      import { DreamForger, body, alg, iris, com } from './scripts/core.js'
+      DreamForger.setup()
+      DreamForger.setOptions({
+        maxLines:"auto",
+        clearBodyOverflow: true
+      })
+    </script>
+  </body>
+</html>
