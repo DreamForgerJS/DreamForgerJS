@@ -5,10 +5,10 @@ import body from './body.js'
 import DreamForger from './dreamforger.js'
 
 let com;
+function commandHandler(){}
 DreamForger.handleCommands = function(){
   com = DreamForger.setCommander()
-  if(com.all === "hello"){
-    body.log("Hello!")
-  }
+  commandHandler()
+  iris.parseColors()
 }
 export { DreamForger, body, alg, iris, com };
