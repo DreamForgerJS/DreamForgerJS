@@ -3,17 +3,18 @@
 DreamForgerJS is a JS library to help you make [Interactive Fiction](https://en.wikipedia.org/wiki/Interactive_fiction) games.  This library is still in progress.  Here is a [demo](https://codepen.io/LeviathanProgramming/pen/NWROwbB)
 
 ## Usage
+
 Basic Commands to help you be able to use DreamForgerJS
 
 ### embeding guide
+
 In your HTML file, create a script tag with `type` set to "module".  If you don't do this, then DreamForgerJS won't run.
 
 ```html
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>DreamForger.js 1.0.1</title>
+        <title>DreamForger.js Execution Environment</title>
     </head>
     <body></body>
     <script type="module">
@@ -26,11 +27,15 @@ Inside of your script tag, put an `import` statement as shown below:
 
 ```html
 <script type="module">
-  //change "[ version ]" to the desired version.  1.1.0 is the current. -->-->-->-->-->-->-->-->-->-->-->--1.1.0
+  //change "[ version ]" to the desired version.
+  /*
+  Possible versions:
+    1.1.0 (does not have the navigator module)
+    1.1.1 (has the navigator module)
+  */
   import { DreamForger, body, alg, iris } from 'https://cdn.jsdelivr.net/gh/DreamForgerJS/DreamForgerJS@[ version ]/scripts/core.js';
 </script>
 ```
-
 
 You have just finished embedding DreamForgerJS!
 
@@ -90,32 +95,34 @@ You can use the `DreamForger.setOptions()` function to make changes to the game'
 ```
 
 #### example #1 : selectCommandOnSubmit
+
 Usually, in an interactive fiction game, once you submit the command, the input box will clear and you will have to type in the next one.
 If you want to allow users to enter the same command multiple times without having to retype them, set the `selectCommandOnSubmit` option to `true`.  By default, it is set to `false`.
 
 #### example #2 : maxLines & clearing body overflow
+
 Most of the time in interactive fiction games, all the commands you enter and the entire story is left in the body.  In the DreamForgerJS engine, you can't scroll to see your past gameplay.
 setting the `maxLines` and `clearBodyOverflow` properties are **highly** reccomended.  If you don't set them, your game will be very inefficient.
 You can set the `maxLines` property to an integer or to "auto".  If you set it to, say, `5`, the body log will only allow five lines of text in the game.  Setting it to "auto" will be much better.  Depending on the height of the device, the maximum number of lines will be limited to the screen height.
 Make sure if you set the `maxLines` property, you set the `clearBodyOverflow` property to `true` as well or it will not work.
 
 #### example #3 : showLastCommand
-In a classic Interactive Fiction game, the player's last command is shown.  In this engine, by default, it is not.  If you would like to let the player see their last command, set the `showLastCommand` property to true.
 
+In a classic Interactive Fiction game, the player's last command is shown.  In this engine, by default, it is not.  If you would like to let the player see their last command, set the `showLastCommand` property to true.
 
 ### Logging text to the body
 
 There are a few basic functions to help you log text to the body.
-  - `body.log("text")` will log some text to the body and will create a line break after.
-  - `body.write("text")` will write some text to the body without applying a line break.
-  - `body.logln("text")` will log some text followed by two line breaks.
-  - `body.clear()` will clear the entire body of all its text.
+
+- `body.log("text")` will log some text to the body and will create a line break after.
+- `body.write("text")` will write some text to the body without applying a line break.
+- `body.logln("text")` will log some text followed by two line breaks.
+- `body.clear()` will clear the entire body of all its text.
 You can also code HTML inside of the body logging/writing function.  
 `body.log("This is text <code>This is code</code> <br> <ul><li>List Item</li></ul>")`
 You can use the `<br>` tag to apply line breaks.
 `body.log("Line one<br> Line two<br> Line three<br> Line four")`
 Header tags (h1-h6) can also be logged, but let's not try that.
-
 
 ### Handling Commands with DreamForgerJS
 
@@ -166,8 +173,7 @@ if(com.mid === "are so"){
 
 The other properties of the `com` variable should be simple enough to understand for you.
 
-
-### The Iris Module : Parsing words & colors.
+### The Iris Module : Parsing words & colors
 
 Declare a function and name it whatever you want.  In this example, it will be called `parseColors()`.  Place it before setting the `DreamForger.handleCommands` function.
 
@@ -207,15 +213,18 @@ Now you are ready to start parsing words.
 There are five color parsing functions that you will need to learn.
 
 #### 1.  The `__cs()` function
+
 The `__cs()` function stands for "colored string".  Use this for parsing stuff like sentences.  Don't even think about parsing individual words with this.  A few better function will be shown in a second.
-An example would be: 
+An example would be
 
 ```javascript
 body.log(__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));
 ```
 
 You can pass in all colors including RGB, HSL, Hex Codes, and CSS colors.  To avoid crashing the iris engine (which can happen at times), don't enter built-in CSS colors.  Use hex, rgb, and hsl instead.
+
 ##### Identically Colored Strings
+
 ```javascript
 body.log(iris.__cs("You walk in a dark, dense forest full of massive pine trees", "rgb(0,150,0)"));
 body.log(iris.__cs("You walk in a dark, dense forest full of massive pine trees", "hsl(120, 100%, 29%)"));
@@ -223,16 +232,21 @@ body.log(iris.__cs("You walk in a dark, dense forest full of massive pine trees"
 ```
 
 #### 2.  the `parseWord()` function
+
 If you want to color a specific word, call the function inside of the `parseColors()` function.
+
 ```javascript
 function parseColors(){
     iris.parseWord("apple","#FF0000");
 }
 ```
+
 Now if the word "apple" is logged to the body, all matches will be colored red.
 
-#### 3.  multi-colored words.
+#### 3.  multi-colored words
+
 Let's say you want to color the word "rainbow" multiple colors.  If you do, here's the perfect function for you.
+
 ```javascript
 function parseColors(){
     iris.parseMultWord("rainbow", [
@@ -246,11 +260,13 @@ function parseColors(){
     ]);
 }
 ```
+
 Each item in the array stands for one character in the word.  The first letter in the word "rainbow" in this example will be colored "#FF0000", the second "rgb(200,175,0)", etc.
 
-
 #### 4.  `parseWordChain()`
+
 With the `parseWordChain()` function, you can parse multiple words at once without having to call the `parseWord()` function multiple times.
+
 ```javascript
 function parseColors(){
     iris.parseWordChain({
@@ -260,9 +276,11 @@ function parseColors(){
     });
 }
 ```
+
 The word "apple" will be colored "#FF0000", "banana" colored "#FFFF00", etc.
 
 #### 5.  `parseMultChain()`
+
 This function is very simillar to the `parseWordChain()` one.  You should be able to find out how to use it.
 
 ```javascript
@@ -278,6 +296,7 @@ function parseColors(){
 
 You can use thest built-in string and array algorithms to make your life easier.
 Here is the starter code for you.  Assume you have already imported everything.
+
 ```javscript
 let inventory = [
     "apple",
@@ -335,7 +354,7 @@ let match6 = alg.matchArr(inventory, "g") // returns "iron dagger"
 
 If you are wondering why match5 and match6 aren't returning other values that have the specified match, here's why: The function scans for the match from beginning to end of the array so the first element that has the match is returned.
 
-##### other basic algorithms
+#### other basic algorithms
 
 - The `arrRand()` function returns a random element in an array.  Just pass an array in as a parameter and get the returned value.
 `let randEl = alg.arrRand(inventory)`
@@ -351,5 +370,93 @@ If you are wondering why match5 and match6 aren't returning other values that ha
 
 - The `floorRand()` function returns a random **whole number** between a minimum and maximum range.
 `let wholeNumber = arl.floorRand(1, 10)`
+
+### The Navigator Module
+
+In most interactive fiction games, you can navigate to different rooms and move by going north, south ease, or west.  You can handle all of this by yourself or you can use the best option:  The Navigator Module.  You can use this module to create an easy-to-see bitmap of what your world looks like, change the description of all the rooms, and even reuse some of them!
+
+#### Using the Navigator module
+
+Include 'nav' (navigator module) in the import statement.
+`import {DreamForger, body, alg, iris, nav} from "https://cdn.jsdelivr.net/gh/DreamForgerJS/DreamForgerJS@[ version ]/scripts/core.js"`
+
+Name the rooms that you will use in your game.  All of the rooms that you will use have to go in the `createRooms()` function.
+
+```javascript
+nav.createRooms({
+    "0": "You are in the forest",
+    "1": "You walk over the sandy desert",
+    "2": "You tramp across the tundra"
+});
+```
+
+Create a bitmap of those rooms.  **Make sure you surround the entire bitmap with a layer of spaces**.  If you don't surround the map with spaces, the player can go into the void of undefined universe and will not be able to get back.  This will crash the navigator engine.
+
+```javascript
+nav.createWorld([
+    "     ",
+    " 000 ",
+    " 111 ",
+    " 222 ",
+    "     "
+]);
+```
+
+You can also make an irregular map.  Just make sure that you keep the layer of padding.
+
+```javascript
+nav.createWorld([
+    "     ",
+    " 000 ",
+    " 0011 ",
+    " 12211 ",
+    " 222 1 ",
+    "  2  12 ",
+    "        "
+]);
+```
+
+When creating a bitmap, keep in mind that the whitespace characters act as void locations, meaning that the player cannot go into them.  If your player spawns on one of the void characters, your game will not function properly.  If you player does spawn on one of them, use the `setPosition()` function below to help you fix it.
+
+The `setPosition()` function sets the x and y coordinates of the player.
+By default, it starts the player on the coordinates (1, 1).
+
+In the example below, the player will spawn on the character "1" if the coordinates are (1, 1).  If the coordinates are set to (2, 2), the player will spawn on the character "3", etc.  Just think of the first character in the first row as (0, 0).
+
+```javascript
+nav.createWorld([
+    "     ",
+    " 100 ",
+    " 032 ",
+    "     ",
+]);
+```
+
+Whenever you move, the navigator module will show you the current location stats.  If you type something like 'look' and hit the enter key in an interactive fiction game, you will be shown the location stats.  The navigator module automatically has the "look and location stats" command built in, but you can log the current location stats by just calling the `nav.locationStats()` function.
+
+#### navigation options
+
+If you want to customize the navigator module, call the `nav.setOptions()` function.  It works almost the same as if you were to call the `DreamForger.setOptions()` function.
+Here is an example of the options being edited, none of the options are required.
+
+```javascript
+nav.setOptions({
+
+    showExits: true,
+    /* Sometimes, if you play an Interactive Fiction game, whenever you move/look around, you will be told the obvious exits of your location "Obvious Exits: north, south".  You can enable/disable it by setting it to true or false*/
+
+    north: "- NORTH",
+    south: "- SOUTH",
+    east: "- EAST",
+    west: "- WEST",
+    /* Change these if the "showExits" option is on.  By default, if showExits is on, it will log "Obvious Exits: North, South, East, West".  In this example, the direction strings are changed so "Obvious Exits: - NORTH, - SOUTH, - EAST, - WEST" */
+
+    goNorth: "you walk towards the northern direction",
+    goSouth: "You crawl in the southern direction",
+    goEast: "You do a cartwheel in the eastern direction",
+    goWest: "You lay down on the floor and roll to the western direction"
+    /* by default, when you move, navigator will log "You go north/south/east/west".   If you want to change that, use these options.  If you go north (using this example), navigator will log "you walk towards the northern direction" instead. */
+});
+```
 
 &copy; Conner Ow (LeviathanProgramming) 2021.
