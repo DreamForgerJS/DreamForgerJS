@@ -1,10 +1,12 @@
 function __cs(val, col) {
     return "<span style='color:" + col + "'>" + val + "</span>"
 }
+
 function parseWord(word, color) {
     var w = document.querySelector("#body-log").innerHTML.replaceAll(word, `<span style="color:${color}">${word}</span>`);
     document.querySelector("#body-log").innerHTML = w;
 }
+
 function parseMultWord(word, colors) {
     var W = word.split('');
     var cw = ``;
@@ -14,6 +16,7 @@ function parseMultWord(word, colors) {
     var w = document.querySelector("#body-log").innerHTML.replaceAll(word, cw);
     document.querySelector("#body-log").innerHTML = w;
 }
+
 function parseWordChain(words) {
     var wks = Object.keys(words);
     var wvs = Object.values(words);
@@ -21,6 +24,7 @@ function parseWordChain(words) {
         this.parseWord(wks[i], wvs[i]);
     }
 }
+
 function parseMultChain(words) {
     var wks = Object.keys(words);
     var wvs = Object.values(words);
@@ -28,5 +32,4 @@ function parseMultChain(words) {
         this.parseMultWord(wks[i], wvs[i]);
     }
 }
-function parseColors(){}
-export { __cs, parseWord, parseMultWord, parseWordChain, parseMultChain, parseColors };
+export { __cs, parseWord, parseMultWord, parseWordChain, parseMultChain };
