@@ -42,13 +42,37 @@ function createWorld(bitmap) {
     }
 }
 
+function placeItem(x, y, item) {
+    for (var i = 0; i < rooms.length; i++) {
+        if (rooms[i].x === x && rooms[i].y === y) {
+            rooms[i].items.push(item);
+        }
+    }
+}
+
+function getCurrentRoom() {
+    for (var i = 0; i < rooms.length; i++) {
+        if (rooms[i].x === position.x && rooms[i].y === position.y) {
+            return rooms[i];
+        }
+    }
+}
+
 function locationStats() {
     for (var i = 0; i < rooms.length; i++) {
         if (rooms[i].x === position.x && rooms[i].y === position.y) {
             if (options.showExits) {
-                body.log(rooms[i].description)
+                if (rooms[i].items.length > 0) {
+                    body.log(rooms[i].description + "<br>You can see " + alg.gramarr(rooms[i].items))
+                } else {
+                    body.log(rooms[i].description)
+                }
             } else {
-                body.logln(rooms[i].description)
+                if (rooms[i].items.length > 0) {
+                    body.logln(rooms[i].description + "<br>You can see " + alg.gramarr(rooms[i].items))
+                } else {
+                    body.logln(rooms[i].description)
+                }
             }
         }
     }
@@ -118,4 +142,4 @@ function run(com) {
     }
 }
 
-export { createRooms, createWorld, setOptions, run, locationStats, setPosition, rooms, position };
+export { createRooms, createWorld, setOptions, run, locationStats, setPosition, rooms, position, placeItem, getCurrentRoom };
