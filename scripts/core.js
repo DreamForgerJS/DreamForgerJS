@@ -4,6 +4,8 @@ import $ from './query.js'
 import body from './body.js'
 import DreamForger from './dreamforger.js'
 import * as nav from './navigator.js'
+import * as bp from './backpack.js'
+import * as anvil from './anvil.js'
 const words = {
     //moving
     "go": ["go", "walk", "move", "journey", "progress"],
@@ -42,4 +44,4 @@ const words = {
     "make": ["make", "craft", "create"],
     "quests": ["quests", "jobs", "work", "tasks"],
 }
-export { DreamForger, body, alg, iris, words, nav };
+export { DreamForger, body, alg, iris, words, nav, bp, anvil };
